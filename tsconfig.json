@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@Web/*" : ["./src/Web/*"],
+      "@Domain/*" : ["./src/Domain/*"]
+    },
+    "target": "ES2021",
+    "module": "CommonJS",
+    "forceConsistentCasingInFileNames" : true,
+    "emitDecoratorMetadata"            : true,
+    "experimentalDecorators"           : true,
+    "resolveJsonModule"                : true,
+    "allowJs"                          : true,
+    "skipLibCheck"                     : true,
+  },
+}
