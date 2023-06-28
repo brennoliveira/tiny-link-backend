@@ -9,8 +9,7 @@ export class RedirectController {
 
   execute = async (req: Request, res: Response): Promise<Response | void> =>{
     try {
-      const { shortenedUrl } = req.params
-
+      const shortenedUrl = req.params["shortenedUrl"]
       const record = await this.linksRepo.getRecord({shortenedUrl})
 
       if (record) {

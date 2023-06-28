@@ -6,6 +6,5 @@ export const generateShortUrl = (length?: number): string => {
     const randomIndex = Math.floor(Math.random() * characters.length);
     shortUrl += characters[randomIndex];
   }
-  console.log('short url: ',shortUrl)
   return shortUrl;
 };

@@ -11,5 +11,5 @@ const redirectController = new RedirectController(repo)
 export default (router: Router) => {
 
   router.post('/link/shorten', linkController.execute)
-  router.get('/:shotenedUrl', redirectController.execute)
+  router.get('/link/:shortenedUrl', redirectController.execute)
 };

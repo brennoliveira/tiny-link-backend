@@ -9,7 +9,6 @@ export class LinksRepository extends Repository implements ILinksRepository {
       const info = await this.repository.create({ 
         data: { ...data, createdAt: new Date() } 
       })
-      console.log('repo: ',info)
       return new Links({ ...info, createdAt: new Date(info.createdAt) })
     } catch (error) {
       console.log(`create record error: ${error}`)
@@ -19,13 +18,19 @@ export class LinksRepository extends Repository implements ILinksRepository {
 
   async getRecord(data: Partial<Links>): Promise<Links> {
     try {
-      return await this.repository.findFirst({ where: {
-        originalUrl: data.originalUrl,
-        shortenedUrl: data.shortenedUrl
-      } })
+      const record = await this.repository.findUnique({
+        where: {
+          originalUrl: data.originalUrl ?? undefined,
+          shortenedUrl: data.shortenedUrl ?? undefined,
+          id: data.id ?? undefined
+        },
+      });
+      return record;
     } catch (error) {
-      console.log(`find record error: ${error}`)
-      throw new Error(error)
+      console.error(error);
+      throw new Error(`Failed to fetch records: ${error}`);
     }
   }
+  
+  
 }

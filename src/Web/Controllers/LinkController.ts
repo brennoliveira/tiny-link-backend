@@ -1,12 +1,11 @@
-import { LinksRepository } from "@Infra/Repositories";
+import { ILinksRepository } from "@Models/Entities";
 import { generateShortUrl } from "@Shared/Utils";
-import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 
 export class LinkController {
 
   constructor(
-  private readonly linkRepo: LinksRepository
+  private readonly linkRepo: ILinksRepository
   ){}
 
   execute = async (req: Request, res: Response): Promise<Response> =>{
