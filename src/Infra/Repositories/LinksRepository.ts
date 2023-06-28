@@ -17,9 +17,12 @@ export class LinksRepository extends Repository implements ILinksRepository {
     }
   }
 
-  async getShortenedLink(originalUrl: string): Promise<Links> {
+  async getRecord(data: Partial<Links>): Promise<Links> {
     try {
-      return await this.repository.findFirst({ where: { originalUrl } })
+      return await this.repository.findFirst({ where: {
+        originalUrl: data.originalUrl,
+        shortenedUrl: data.shortenedUrl
+      } })
     } catch (error) {
       console.log(`find record error: ${error}`)
       throw new Error(error)

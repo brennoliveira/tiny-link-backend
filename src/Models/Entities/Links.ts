@@ -15,5 +15,5 @@ export class Links {
 
 export interface ILinksRepository {
   createRecord(data: Pick<Links, 'originalUrl' | 'shortenedUrl'>): Promise<Links>;
-  getShortenedLink(originalUrl: string): Promise<Links>;
+  getRecord(data: Partial<Links>): Promise<Links>;
 }

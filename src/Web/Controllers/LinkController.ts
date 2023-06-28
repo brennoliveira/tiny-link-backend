@@ -3,18 +3,17 @@ import { generateShortUrl } from "@Shared/Utils";
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 
-class LinkController {
+export class LinkController {
 
+  constructor(
   private readonly linkRepo: LinksRepository
-  constructor(){
-    this.linkRepo = new LinksRepository(new PrismaClient())
-  }
+  ){}
 
   execute = async (req: Request, res: Response): Promise<Response> =>{
     try {
       const { originalUrl } = req.body
       
-      const urlAlreadyShortened = await this.linkRepo.getShortenedLink(originalUrl)
+      const urlAlreadyShortened = await this.linkRepo.getRecord({originalUrl})
       if (urlAlreadyShortened) return res.json({ urlAlreadyShortened })
 
       const shortenedUrl = generateShortUrl()
@@ -27,5 +26,3 @@ class LinkController {
     }
   }
 }
-
-export default new LinkController()
