@@ -1,9 +1,8 @@
+import LinkController from '@Web/Controllers/LinkController';
 import { Router } from 'express';
 
 
 export default (router: Router) => {
 
-  router.get('/', (req, res) => {
-    console.log('aaa')
-  });
+  router.post('/link/shorten', LinkController.execute)
 };

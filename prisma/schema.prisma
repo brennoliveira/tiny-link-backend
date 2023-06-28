@@ -11,7 +11,8 @@ datasource db {
 }
 
 model Links {
-  longUrl   String   @id
-  shortUrl  String
-  createdAt DateTime @default(now())
+  id           String   @id @default(cuid())
+  originalUrl  String   @unique
+  shortenedUrl String   @unique
+  createdAt    DateTime @default(now())
 }

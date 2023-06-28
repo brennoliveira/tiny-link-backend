@@ -3,8 +3,10 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@Web/*" : ["./src/Web/*"],
-      "@Domain/*" : ["./src/Domain/*"]
+      "@Web/*"    : ["./src/Web/*"],
+      "@Models/*" : ["./src/Models/*"],
+      "@Infra/*"  : ["./src/Infra/*"],
+      "@Shared/*" : ["./src/Shared/*"]
     },
     "target": "ES2021",
     "module": "CommonJS",
