@@ -28,7 +28,7 @@ class App {
       const { default: route } = await import(`./Routes/${file}`);
       route(router);
     });
-    this.express.use('/api', router);
+    this.express.use('', router);
   }
 }
 
