@@ -13,12 +13,12 @@ export class LinkController {
       const { originalUrl } = req.body
       
       const urlAlreadyShortened = await this.linkRepo.getRecord({originalUrl})
-      if (urlAlreadyShortened) return res.json({ urlAlreadyShortened })
+      if (urlAlreadyShortened) return res.json({ ...urlAlreadyShortened })
 
       const shortenedUrl = generateShortUrl()
       
       const record = await this.linkRepo.createRecord({ originalUrl, shortenedUrl })
-      return res.json({ record })
+      return res.json({ ...record })
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal server error' });
