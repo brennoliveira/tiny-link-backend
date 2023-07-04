@@ -13,7 +13,7 @@ export class RedirectController {
       const record = await this.linksRepo.getRecord({shortenedUrl})
 
       if (record) {
-        return res.redirect(record.originalUrl)}
+        return res.json({...record})}
 
       return res.status(404).json({ error: "URL not found" })
     } catch (error) {
